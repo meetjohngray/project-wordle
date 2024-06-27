@@ -13,3 +13,7 @@ export const range = (start, end, step = 1) => {
   }
   return output;
 };
+
+export const fillRangeWithString = (length, str) => {
+  return range(0, length).map(i => str[i % str.length])
+}

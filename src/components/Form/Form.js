@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Form() {
-  const [guess, setGuess] = React.useState('')
+function Form({ getGuess }) {
+  const [tentativeGuess, setTentativeGuess] = React.useState('')
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    console.log({ guess })
-    setGuess('')
+    getGuess(tentativeGuess)
+    setTentativeGuess('')
   }
 
   return (
@@ -14,10 +14,10 @@ function Form() {
       <input
         name="guess-input"
         type="text"
-        value={guess}
+        value={tentativeGuess}
         onChange={(evt) => {
           const nextGuess = evt.target.value.toUpperCase()
-          setGuess(nextGuess)
+          setTentativeGuess(nextGuess)
         }}
         required
         pattern="[a-zA-Z]{5}"
